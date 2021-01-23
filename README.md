@@ -39,3 +39,12 @@ php bin/console make:registration-form
 lancer un faux serveur mail:
 maildev --hide-extensions STARTTLS
 
+
+initilisation projet (git)
+echo "# walkinparis" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M develop
+git remote add origin https://github.com/Badawane/walkinparis.git
+git push -u origin develop

@@ -1,0 +1,29 @@
+<header>
+    <nav class="navbar navbar-sticky navbar-expand-lg pt-0 pb-0">
+        <div class="navbar-collapse justify-content-end" id="navbarColor01">
+            {% if app.user %}
+            {# user is logged in #}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" click="javascript:void()">{{app.user.email}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
+                </li>
+            </ul>
+            {% else %}
+            {# user is not logged in #}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_register')}}">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% include ("includes/navbar.html.twig") %}
+</header>
