@@ -48,3 +48,6 @@ git commit -m "first commit"
 git branch -M develop
 git remote add origin https://github.com/Badawane/walkinparis.git
 git push -u origin develop
+
+Je fais une modification de mon code !
+je sauvegarde mon fichier .
