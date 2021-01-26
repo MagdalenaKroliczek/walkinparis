@@ -32,28 +32,31 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('index');
         }
         
-        $user = new Account();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $account = new Account();
+        $form = $this->createForm(RegistrationFormType::class, $account);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
+            $account->setPassword(
                 $passwordEncoder->encodePassword(
-                    $user,
+                    $account,
                     $form->get('plainPassword')->getData()
                 )
             );
 
+            $role = $form->get('role')->getData();
+            $account->setRoles([$role]); 
+
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $entityManager->persist($account);
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $account,
                 (new TemplatedEmail())
                     ->from(new Address('mailer@your-domain.com', 'mailer@your-domain.com'))
-                    ->to($user->getEmail())
+                    ->to($account->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );

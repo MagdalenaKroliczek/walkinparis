@@ -1,21 +1,140 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}S'enregister{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+<style>
+    .form-control {
+        height: 41px;
+        background: #f2f2f2;
+        box-shadow: none !important;
+        border: none;
+    }
 
-    <h1>Register</h1>
+    .form-control:focus {
+        background: #e2e2e2;
+    }
+
+    .form-control,
+    .btn {
+        border-radius: 3px;
+    }
+
+    .signup-form {
+        width: 400px;
+        margin: 30px auto;
+    }
+
+    .signup-form form {
+        color: #999;
+        border-radius: 3px;
+        margin-bottom: 15px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        border-top: 1px solid  rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+
+    .signup-form h2 {
+        color: #333;
+        font-weight: bold;
+        margin-top: 0;
+    }
+
+    .signup-form hr {
+        margin: 0 -30px 20px;
+    }
+
+    .signup-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .signup-form input[type="checkbox"] {
+        margin-top: 3px;
+    }
+
+    .signup-form .row div:first-child {
+        padding-right: 10px;
+    }
+
+    .signup-form .row div:last-child {
+        padding-left: 10px;
+    }
+
+    .signup-form .btn {
+        font-size: 16px;
+        font-weight: bold;
+        background: #3598dc;
+        border: none;
+        min-width: 140px;
+    }
+
+    .signup-form .btn:hover,
+    .signup-form .btn:focus {
+        background: #2389cd !important;
+        outline: none;
+    }
+
+    .signup-form a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .signup-form a:hover {
+        text-decoration: none;
+    }
+
+    .signup-form form a {
+        color: #3598dc;
+        text-decoration: none;
+    }
+
+    .signup-form form a:hover {
+        text-decoration: underline;
+    }
+
+    .signup-form .hint-text {
+        color: #000;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+</style>
+
+{% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+
+<div class="signup-form">
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+    <h2>S'enregister</h2>
+    <p>Veuillez remplir ce formulaire pour créer un compte !</p>
+    <hr>
+    {{ form_row(registrationForm.fullname) }}
+    {{ form_row(registrationForm.role) }}
+     {# {% for key, roleItem in registrationForm.role %}
+        <div class="custom-control custom-radio custom-control-inline">
+            <input 
+                type="radio" 
+                value="{{roleItem.vars.value}}" 
+                id="{{roleItem.vars.id}}" 
+                name="{{roleItem.vars.full_name}}" 
+                class="custom-control-input"
+            {{ roleItem.vars.checked ? 'checked' : '' }} 
+            >
+            <label class="custom-control-label" for="{{roleItem.vars.id}}">{{roleItem.vars.label}}</label>
+        </div>
+    {% endfor %} #}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn btn-primary">S'enregister</button>
+
     {{ form_end(registrationForm) }}
+    <div class="hint-text">Vous avez déjà un compte ? <a href="{{path('app_login')}}">Se connecter</a></div>
+</div>
+
 {% endblock %}
