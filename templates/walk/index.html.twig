@@ -6,15 +6,33 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+   
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<body style="background-color:snow;">
+    <div class="card" style="width: 18rem; float: right; margin-right: 200px; margin-top:30px;">
+        <div class="card-body">
+          <h4 class="card-title">Détails de la visite</h4>
+          <p class="card-text">Le prix:30 euros. Le prix comprend: Une visite avec guidée .</p>
+          <a href="#" class="btn btn-primary">Réservation</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1 style="font-style: italic; color: black;">Goussainville Vieux-Pays </h1>
+            <p style="text-align: initial; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
+                À quelques minutes de la gare RER de Goussainville se trouve<br>
+                Le hameau, trop proche d'une des pistes de l'aéroport de Roissy, s'est arrêté en 1973. <br>
+                Au premier regard, on ne voit que les maisons en ruine. Mais ne parlez surtout pas de village fantôme...
+                l’un des villages les plus insolites d’Île-de-France. Depuis 1973, ce hameau situé<br>
+                 à cinq kilomètres de l’aéroport Roissy Charles de Gaulle est presque entièrement abandonné <br>
+                 C'est un voyage inoubliable, venez avec nous.
+            </p>     
+    </div>
+    <br>
+    <br>
+    <div class="images">
+        <img src="{{ asset('images/1o.jpg') }}"  alt="...">
+        <img src="{{ asset('images/3abd.jpg') }}" alt="...">   
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/src/Controller/WalkController.php'|file_link(0) }}">src/Controller/WalkController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/templates/walk/index.html.twig'|file_link(0) }}">templates/walk/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

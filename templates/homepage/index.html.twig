@@ -6,10 +6,12 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .container-carousel {max-width:800px; width:75%; margin-left:20%; margin-right:20%}
+    
 </style>
 
 <div class="container-carousel">
-      <h2>Carousel Example</h2>
+      {# <h2>Walk in Paris</h2> #}
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -59,14 +61,16 @@
         </a>
       </div>
     </div>
-    <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search trip by keywords" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
+    <br>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Recherche par mots-clés" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Chercher</button>
+      </form>
+    </div>
 </nav>
+<br>
 
    <div class="container">
     <div class="card mb-3" style="max-width:940px;">
@@ -76,7 +80,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Les troi Domaines</strong></h5>
+            <h4 class="card-title">Les Trois Domaines</h4>
             <p class="card-text">Le manoir mystérieux avec de nombreuses histoires intéressantes.<br>
               Nombreux propriétaires et disparitions mystérieuses.<br>
                Découvrez son histoire en le visitant avec nous!</p>
@@ -92,7 +96,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Les Arcades du Lac</strong></h5>
+            <h4 class="card-title">Les Arcades du Lac</h4>
             <p class="card-text">L'un des bâtiments les plus intéressants conçus par le célèbre Ricardo Bofill.<br>
               Si vous êtes intéressé par l'architecture, assurez-vous de visiter cet endroit avec nous!.</p>
                <button type="button" class="btn btn-primary">Voir plus de détails</button>
@@ -107,7 +111,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong> Les espaces d'Abraxas </strong></h5>
+            <h4 class="card-title">Les espaces d'Abraxas</h4>
             <p class="card-text">Aimez-vous Game of Thrones? Vous devez visiter cet endroit avec nous! <br>
               Plusieurs scènes ont été filmées ici! <br>
               Les bâtiments et l'atmosphère de cet endroit valent le détour.<br>
@@ -125,7 +129,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>L'Hôpital Universitaire Pitié Salpêtrière </strong></h5>
+            <h4 class="card-title">L'Hôpital Universitaire Pitié Salpêtrière </h4>
             <p class="card-text">Saviez-vous qu'il y a un bâtiment oublié à l'hôpital?<br>
               Archives, sculptures, peintures et le vélo qui alimentait <br>
               le moulin à vent pour donner de l'oxygène.<br>
@@ -142,7 +146,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Le Menoir Senchal  </strong></h5>
+            <h4 class="card-title">Le Menoir Senchal </h4>
             <p class="card-text">Un autre manoir oublié.<br>
               Un diamant parmi les immeubles abandonnés de la région parisienne.
               Ce voyage surprendra et satisfera sûrement les amateurs d'architecture!.<br>
@@ -159,7 +163,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Le Château de Monte-Cristo </strong></h5>
+            <h4 class="card-title">Le Château de Monte-Cristo</h4>
             <p class="card-text">Après le succès du livre "Le Comte de Monte Cristo", <br>
               Alexandre Dumas lui-même a voulu vivre dans un tel château. Par conséquent,<br>
                il a supervisé lui-même la construction du château de rêve.<br>
@@ -178,7 +182,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Jardin d'agronomie tropicale </strong></h5>
+            <h4 class="card-title">Jardin d'agronomie tropicale </h4>
             <p class="card-text">Le jardin est magnifique et un peu oublié.<br>
               Il abrite les vestiges de l'exposition coloniale de 1907.<br>
                Serres tropicales, monuments, ponts asiatiques.<br>
@@ -196,7 +200,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Le Palais Garnier </strong></h5>
+            <h4 class="card-title">Le Palais Garnier</h4>
             <p class="card-text">Si vous êtes à Paris et que vous ne voyez pas cet endroit,<br>
               c'est comme si vous n'étiez pas là!<br>
              Seulement avec nous, vous visiterez cet endroit de l'arrière.<br>
@@ -213,7 +217,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Goussainville Vieux-Pays </strong></h5>
+            <h4 class="card-title">Goussainville Vieux-Pays</h4>
             <p class="card-text">À quelques minutes de la gare RER de Goussainville se trouve<br>
               l’un des villages les plus insolites d’Île-de-France. Depuis 1973, ce hameau situé<br>
                à cinq kilomètres de l’aéroport Roissy Charles de Gaulle est presque entièrement abandonné <br>
@@ -230,7 +234,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Cimetière du Père Lachaise </strong></h5>
+            <h4 class="card-title">Cimetière du Père Lachaise</h4>
             <p class="card-text">Le plus grand et le plus célèbre cimetière parisien, fondé en 1804.<br>
               Sa superficie est de 44 hectares. De nombreuses personnalités sont enterrées ici,<br>
                y compris Balzac, Edith Piaf, Jim Morisson, Chopin.<br>
@@ -248,7 +252,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>Le château du duc d'Épernon </strong></h5>
+            <h4 class="card-title">Le château du duc d'Épernon</h4>
             <p class="card-text">Cet étonnant château médiéval doit être visité au moins une fois dans votre vie!,<br>
               Dans son histoire, il a joué divers rôles, c'était une prison, un tribunal, un domaine utilisé pour la chasse,<br>
                c'était la propriété de l'armée et des bûcherons. <br>
@@ -266,7 +270,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><strong>La Sainte-Chapelle</strong></h5>
+            <h4 class="card-title">La Sainte-Chapelle</h4>
             <p class="card-text">C'est un joyau architectural gothique! Construit en seulement 7 ans, c'est un endroit à couper le souffle.<br>
               Toits de verre uniques. Disposés en 15 vitraux de 15 m de haut, les vitraux aux 1113 scènes de l'Ancien et du Nouveau Testament<br>
                racontent l'histoire du monde jusqu'à l'arrivée des reliques à Paris.<br>
@@ -276,7 +280,7 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
   </div>
  
 {% endblock %}
