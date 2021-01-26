@@ -13,6 +13,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Account implements UserInterface
 {
+    const ROLE_USER = 'ROLE_USER';
+    const ROLE_VISITOR = 'ROLE_VISITOR';
+    const ROLE_GUIDE = 'ROLE_GUIDE';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -40,6 +45,11 @@ class Account implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fullname;
 
     public function getId(): ?int
     {
@@ -75,7 +85,7 @@ class Account implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = Account::ROLE_USER;
 
         return array_unique($roles);
     }
@@ -127,6 +137,18 @@ class Account implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getFullname(): ?string
+    {
+        return $this->fullname;
+    }
+
+    public function setFullname(string $fullname): self
+    {
+        $this->fullname = $fullname;
 
         return $this;
     }
