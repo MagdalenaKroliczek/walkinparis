@@ -4,17 +4,48 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .row.content {height: 1500px}
+    
+    .sidenav {
+      background-color: #F5E1A0;
+      height: 100%;
+    } 
+ 
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+ <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-1 sidenav">
+      </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/src/Controller/HowItWorksController.php'|file_link(0) }}">src/Controller/HowItWorksController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/templates/how_it_works/index.html.twig'|file_link(0) }}">templates/how_it_works/index.html.twig</a></code></li>
-    </ul>
-</div>
+      <div class="col-sm-11">
+        
+        <hr>
+        <h2>Réservations</h2>
+        <br>
+        <p>Pour réserver des créneaux horaires, choississez les balades de votre choix et sélectionnez les. Vous pourrez alors sélectionner les dates et horaires.</p>
+        <br><br>
+
+        <hr>
+        <h2>Visites</h2>
+        <br>
+        <p>Pour résever des créneaux horaires, choississez les balades de votre choix et sélectionnez les. Vous pourrez alors sélectionner les dates et horaires.</p>
+        <br><br>
+
+        <hr>
+        <h2>Création</h2>
+        <br>
+        <p>Pour résever des créneaux horaires, choississez les balades de votre choix et sélectionnez les. Vous pourrez alors sélectionner les dates et horaires.</p>
+        <br><br>
+
+      </div>
+    </div>
+  </div>
 {% endblock %}

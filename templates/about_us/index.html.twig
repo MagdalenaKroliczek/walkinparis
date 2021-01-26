@@ -1,17 +1,11 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello AboutUsController!{% endblock %}
-
 {% block body %}
 <style>
-    .row.content {height: 1500px}
-    
+    .row.content {height: 1500px} 
     
     .sidenav {
-      background-color: #F5E1A0;
       height: 100%;
-    } 
- 
+    }
+    
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
@@ -21,21 +15,31 @@
     }
 </style>
 
- <div class="container-fluid">
-    <div class="row content">
-      <div class="col-sm-1 sidenav">
-      </div>
-
-      <div class="col-sm-11">
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-5 sidenav">
+                <img src="{{ asset('images/img.jpg') }}" width="100%" height="" class="d-inline-block align-top"
+            alt="">
+            </div>
+            <div class="col-sm-7">
         
-        <hr>
-        <h2>A propos de nous</h2>
-        <br>
-        <p>Nous sommes une entreprise qui propose de mettre en relation des guides parisiens et parisiennes et des touristes. Ces guides vont feront visiter un Paris connu comme un Paris plus insolite/ Notre object principal est de vous faire découvrir Paris comme elle est vue par ceux et celles qui la connaissent.</p>
-        <br><br>
-      </div>
+                <hr>
+                <h2>Qui sommes nous ?</h2>
+                <br>
+                <p>Walk in Paris est un site qui propose des visites guidées et des balades dans Paris. Notre objectif est de faire vous découvrir la ville à travers les yeux de guides expérimentés qui connaissent aussi bien les lieux connus que des lieux tout à fait insolites.</p>
+                <br>
+
+        
+                <h2>Nos valeurs</h2>
+                <br>
+                <p>Si vous faire visiter la capitale française comme vous ne l'avez jamais visitée est très important pour nous. Nos valeurs le sont tout autant. Nous nous assurons de la qualité des guides qui utilisent  notre plateforme pour proposer des balades. Ainsi, nous demandons à chacun des guides de respecter une charte de conduite pour que la visite guidée se passe dans le respect de chaque personne, peu importe son genre ou son expression de genre, sa religion, sa couleur de peau ou son handicap.</p>
+                <br>
+
+                <h2>Notre histoire</h2>
+                <br>
+                <p>Walk in Paris est né de l'envie de quatre amies qui ont grandi à Paris. Forcées de reconnaitre que les touristes ne connaissaient qu'un Paris très connu et férues de balades urbaines en tous genres, elles ont eu l'idée de lancer une plateforme qui permettraient à des guides parisiens et parisiennes de proposer des balades dans un Paris insolite et subjectif.</p>
+                <br><br>
+            </div>
+        </div>
     </div>
-  </div>
-
-
 {% endblock %}
