@@ -19,6 +19,7 @@ security:
         main:
             anonymous: lazy
             provider: app_user_provider
+            entry_point: App\Security\AuthenticationEntryPoint
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
@@ -33,9 +34,15 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+    role_hierarchy:
+        ROLE_VISITOR:     ROLE_USER
+        ROLE_GUIDE:       ROLE_USER
+        ROLE_ADMIN:       [ROLE_VISITOR, ROLE_GUIDE, ROLE_ALLOWED_TO_SWITCH]
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # - { path: ^/dashboard, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
