@@ -35,4 +35,53 @@
         <img src="{{ asset('images/3abd.jpg') }}" alt="...">   
     </div>
 
+    <br> 
+    <h2 style="color: darkgoldenrod; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 10px;">Guide touristique</h2>
+    <br>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ asset('images/ja1.jpg') }}" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Madeleine B.</h5>
+            <p class="card-text">Une amoureux de Paris et de ses coins et recoins.
+              Depuis 5 ans, il s'occupe de tournées de loisir dans ses coins et recoins. Il connaît les demeures abandonnées comme sa propre poche.
+              Passionné d'architecture et de photographie</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <br>
+      <h1>Contactez le guide</h1>
+      <br>
+
+      <form method="post" action="">
+        <div class="form-group">
+          <label for="nom">Nom : </label>
+          <input type="text" class="form-control" id="nom" placeholder="Saisir votre nom" name="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom : </label>
+          <input type="text" class="form-control" id="prenom" placeholder="Saisir votre prénom" name="prenom" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email : </label>
+          <input type="email" class="form-control" id="email" placeholder="Saisir votre email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="Message">
+          Votre message
+          </label>
+          <br />
+          <textarea name="Message" id="Message" rows="5" cols="40"></textarea> 
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>       
+      </form>
+    </div>  
+
+
 {% endblock %}
