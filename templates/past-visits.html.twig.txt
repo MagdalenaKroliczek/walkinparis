@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilvisitorController!{% endblock %}
+
+{% block body %}
+<style>
+    .row.content {height: 1500px}
+    
+    
+    .sidenav {
+      background-color: #F5E1A0;
+      height: 100%;
+    }
+    
+ 
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+</style>
+
+ <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+          <br>
+          <h3> Mes balades précédentes</h3>
+      </div>
+
+      <div class="col-sm-9">
+          <br><br>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action" class="couleurfond">Le Menoir Senchal
+            </a>
+            <a href="#" class="list-group-item list-group-item-action" class="couleurfond">Goussainville Vieux-Pays in</a>
+            <a href="#" class="list-group-item list-group-item-action" class="couleurfond">Les Trois Domaines</a>
+            <a href="#" class="list-group-item list-group-item-action" class="couleurfond">Les Arcades du Lac</a>
+            <a href="#" class="list-group-item list-group-item-action" class="couleurfond">Les espaces d'Abraxas</a>
+            
+           
+          </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
