@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AccountRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -95,6 +96,14 @@ class Account implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    function isGuide(): bool {
+        return in_array(Account::ROLE_GUIDE, $this->roles);
+    }
+
+    function isVisitor(): bool {
+        return in_array(Account::ROLE_VISITOR, $this->roles);
     }
 
     /**
