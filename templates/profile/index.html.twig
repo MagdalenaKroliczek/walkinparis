@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilvisitorController!{% endblock %}
+{% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <br>
-    <h1>Créer un profil</h1>
-    <br>
+<style>
+    .profile-form { margin-top: 1em; }
+</style>
+
+<div class="profile-form">
+    <h1>Modifier mon profil</h1>
 
     <form method="post" action="">
         <div class="form-group">
@@ -27,7 +29,7 @@
         </div>
         <br>
 
-        <button type="submit" class="btn btn-primary">Créer</button>      
+        <button type="submit" class="btn btn-primary">Mise à jour</button>      
     </form>
-</div>  
+</div>
 {% endblock %}
