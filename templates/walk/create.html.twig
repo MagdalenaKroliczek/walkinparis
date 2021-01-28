@@ -4,38 +4,38 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-   
+  .example-wrapper {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+  }
+
+  .example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+  }
 </style>
 
 <div class="card border-0">
   <div class="card-body">
     <h1 class="card-title">Créer une balade</h5>
+      <p>Complétez les informations suivantes :</p>
 
+      {{ form_start(walkForm) }}
+      <hr>
 
-      <form method="post" action="">
-        <div class="form-group">
-          <label for="type">Titre: </label>
-          <input type="text" class="form-control" id="type de promenade" placeholder="Saisir votre type de promenade" name="type de promenade" required>
-        </div>
-        <div class="form-group">
-          <label for="lieu">Date : </label>
-          <input type="date" id="date" name="date" required>
-        </div>
-        <div class="form-group">
-          <label for="Message">
-            Description
-          </label>
-          <br>
-          <textarea name="Message" id="Message" rows="5" cols="40" required></textarea> 
-        </div>
-        <input type="file" name="monfichier">
-		    <br><br>
-        <button type="submit" class="btn btn-primary">Créer</button> <a href="{{path('dashboard')}}">Annuler</a>
-      </form>
+      {{ form_row(walkForm.title, {'attr': {'placeholder': 'Saisir un titre de promenade'} }) }}
+      {{ form_row(walkForm.date) }}
+      {{ form_row(walkForm.description,  {'attr': {'placeholder': 'Saisir une description'} }) }}
+      {{ form_row(walkForm.image, {
+            label: 'Ajouter une photo'
+        }) }}
+
+      {{ form_widget(walkForm.save, { 'label': 'Ajouter' }) }} <a href="{{path('dashboard')}}">Annuler</a>
+
+      {{ form_end(walkForm) }}
   </div>
 </div>
 
 {% endblock %}
-

@@ -14,10 +14,12 @@
   <div class="card-body">
     <h1 class="card-title">Tableau de bord</h5>
     {# <p class="card-text">Mes visites</p> #}
-
+    {% for flashSuccess in app.flashes('success_message') %}
+    <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+    {% endfor %}
 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Image</th>
