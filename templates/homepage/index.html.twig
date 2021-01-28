@@ -76,6 +76,10 @@
 
 <div class="container container-walk">
 
+  {% if walks|length == 0 %}
+  <b>Aucune balade n'est enregistré actuellement<b>
+  {% endif %}
+
   {% for walk in walks %}
   <div class="row border mb-3 g-0">
     <div class="container-walk_image col-12 col-lg-4">
