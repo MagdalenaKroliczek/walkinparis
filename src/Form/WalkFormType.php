@@ -22,9 +22,7 @@ class WalkFormType extends AbstractType
             ])
             ->add('description', Type\TextareaType::class)
             ->add('image', Type\FileType::class )
-            ->add('save', Type\SubmitType::class, [
-                // 'mapped' => false,
-            ] )
+            ->add('save', Type\SubmitType::class)
         ;
     }
 

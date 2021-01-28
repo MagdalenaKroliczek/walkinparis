@@ -103,7 +103,3 @@ git commit -m "first commit"
 git branch -M develop
 git remote add origin https://github.com/Badawane/walkinparis.git
 git push -u origin develop
-
-générer une class pour le formulaire
-
-3- 

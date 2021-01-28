@@ -37,6 +37,12 @@ class Walk
      */
     private $image;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Account::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $guide;
+
     public function __construct() {
         $this->date =  new \DateTime();
     }
@@ -90,6 +96,18 @@ class Walk
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getGuide(): ?Account
+    {
+        return $this->guide;
+    }
+
+    public function setGuide(Account $guide): self
+    {
+        $this->guide = $guide;
 
         return $this;
     }
