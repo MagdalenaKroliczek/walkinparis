@@ -105,3 +105,5 @@ git remote add origin https://github.com/Badawane/walkinparis.git
 git push -u origin develop
 
 générer une class pour le formulaire
+
+3- 
