@@ -32,7 +32,7 @@
             <tbody>
                 {% for walk in walks %}
                 <tr>
-                    <td><img src="{{asset('images/1.jpg')}}" alt=""></td>
+                    <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="walk.title"></td>
                     <td>{{walk.title}}</td>
                     <td>{{walk.description}}</td>
                     <td>{{walk.date|date("m/d/Y")}}</td>
