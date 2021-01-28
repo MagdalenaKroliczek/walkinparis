@@ -43,8 +43,6 @@ class DashboardController extends AbstractController
         $walks = $walkRepository->findBy(['guide' => $this->getUser()]);
 
         return $this->render('dashboard/guide.html.twig', [
-            'controller_name' => 'DashboardController',
-            'action_name' => 'showGuideDashboard',
             'walks' => $walks,
         ]);
     }
