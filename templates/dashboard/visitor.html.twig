@@ -1,99 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilvisitorController!{% endblock %}
+{% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
 <style>
-     .table-responsive img{
-    width: 100px;
-    height: 100px;
-    }
-    
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
- <div class="card border-0">
-    <div class="card-body">
-      <h1 class="card-title">Tableau de bord</h5>
-       <p class="card-text">Mes balades précédentes et à venir</b></p> 
-      
-      <div class="alert alert-success" role="alert"></div>
-     
 
-      <div class="table-responsive">
-          <table class="table table-hover">
-              <thead>
-                  <tr>
-                      <th scope="col">Image</th>
-                      <th scope="col">Titre</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td><img src="{{asset('images/1.jpg')}}" alt=""></td>
-                      <td>Les espaces d'Abraxas</td>
-                      <td>Aimez-vous Game of Thrones? Vous devez visiter cet endroit avec nous!</td>
-                      <td>25/02/2021 à 09:00</td>
-                      <td>
-                          <ul class="nav flex-column">
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Voir</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Supprimer</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link p-0" href="#">Laisser un commentaire</a>
-                            </li>
-                          </ul>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td><img src="{{asset('images/2.jpg')}}" alt=""></td>
-                      <td>Cimetière du Père Lachaise </td>
-                      <td>Le plus grand et le plus célèbre cimetière parisien, fondé en 1804</td>
-                      <td>25/02/2021 à 09:00</td>
-                      <td>
-                          <ul class="nav flex-column">
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Voir</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Modifier</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Laisser un commentaire</a>
-                              </li>
-                          </ul>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td><img src="{{asset('images/3.jpg')}}" alt=""></td>
-                      <td>Le Château de Monte-Cristo</td>
-                      <td>Après le succès du livre "Le Comte de Monte Cristo"</td>
-                      <td>25/02/2021 à 09:00</td>
-                      <td>
-                          <ul class="nav flex-column">
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Voir</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link p-0" href="#">Modifier</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a  href="" class="nav-link p-0">Laisser un commentaire</a>
-                              </li>
-                          </ul>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-      <a href="#" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Réserver une balade</a>
-    </div>
-  </div>
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }} / {{ action_name }}! ✅</h1>
 
 
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/wamp64/www/symfony/walkinparis/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
+    </ul>
+</div>
 {% endblock %}

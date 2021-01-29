@@ -21,10 +21,10 @@ class WalkFormType extends AbstractType
                 "widget" => 'single_text',
             ])
             ->add('description', Type\TextareaType::class)
-            ->add('image', Type\FileType::class, [
-                'mapped' => false
+            ->add('image', Type\FileType::class )
+            ->add('save', Type\SubmitType::class, [
+                // 'mapped' => false,
             ] )
-            ->add('save', Type\SubmitType::class)
         ;
     }
 
