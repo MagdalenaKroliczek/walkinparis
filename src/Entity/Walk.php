@@ -38,10 +38,15 @@ class Walk
     private $image;
 
     /**
-     * @ORM\OneToOne(targetEntity=Account::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Account::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $guide;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price = 0;
 
     public function __construct() {
         $this->date =  new \DateTime();
@@ -112,6 +117,18 @@ class Walk
     public function setGuide(Account $guide): self
     {
         $this->guide = $guide;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

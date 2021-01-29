@@ -7,6 +7,14 @@
   .carousel-item .carousel-caption {
     background: rgba(0, 0, 0, 0.5)
   }
+
+  .container-walk .row, .container-walk .container-walk_image {
+    max-height: 250px;
+  }
+
+  .container-walk .container-walk_image img {
+    max-height: 100%;
+  }
 </style>
 
 <div class="container-carousel">
@@ -53,8 +61,6 @@
 </div> <!-- end carroussel -->
 
 
-<br>
-
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <form class="d-flex">
@@ -65,7 +71,7 @@
 </nav>
 <br>
 
-<div class="container container-walk">
+<div class="container container-walk mb-5">
 
   {% if walks|length == 0 %}
   <b>Aucune balade n'est enregistré actuellement<b>

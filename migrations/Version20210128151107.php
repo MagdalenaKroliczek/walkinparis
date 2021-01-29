@@ -20,17 +20,14 @@ final class Version20210128151107 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('TRUNCATE TABLE walk');
         $this->addSql('ALTER TABLE walk ADD guide_id INT NOT NULL');
         $this->addSql('ALTER TABLE walk ADD CONSTRAINT FK_8D917A55D7ED1D4B FOREIGN KEY (guide_id) REFERENCES account (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D917A55D7ED1D4B ON walk (guide_id)');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE walk DROP FOREIGN KEY FK_8D917A55D7ED1D4B');
-        $this->addSql('DROP INDEX UNIQ_8D917A55D7ED1D4B ON walk');
         $this->addSql('ALTER TABLE walk DROP guide_id');
     }
 }
