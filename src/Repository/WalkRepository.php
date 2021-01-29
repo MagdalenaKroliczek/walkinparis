@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Account;
 use App\Entity\Walk;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -35,6 +36,24 @@ class WalkRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+    /**
+     * Find walk with given visitor as parameter with DQL object
+     * @return Walk[] Returns an array of Walk objects
+     */
+    public function findByVisitors(Account $visitor)
+    {
+        return $this->createQueryBuilder('w')
+            ->leftJoin('w.visitors', 'v')
+            ->andWhere('v.id = :val')
+            ->setParameter('val', $visitor)
+            ->orderBy('w.id', 'ASC')
+            // ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Walk
