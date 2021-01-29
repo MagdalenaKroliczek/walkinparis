@@ -78,11 +78,12 @@
   {% endif %}
 
   {% for walk in walks %}
-  <div class="row border mb-3 g-0">
+  <div class="row shadow-sm border mb-3 g-0">
     <div class="container-walk_image col-12 col-md-4 pl-0 text-center">
       <img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}" class="img-fluid">
     </div>
     <div class="container-walk_description col-12 col-md-8 p-3">
+      <span class="float-right h5 p-3">{{walk.price|format_currency('EUR')}}</span>
       <h4>{{walk.title}}</h4>
       <p>{{walk.description|striptags|length>250 ? walk.description|striptags|slice(0, 250) ~ '...' :  walk.description|striptags }}</p>
       <a href="{{path('walk_show', {id: walk.id})}}" class="btn btn-primary">Voir plus de détails</a>
