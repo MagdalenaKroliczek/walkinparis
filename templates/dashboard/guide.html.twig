@@ -4,59 +4,100 @@
 
 {% block body %}
 <style>
-.table-responsive img{
-    width: 100px;
-    height: 100px;
-}
+    .table-responsive img {
+        width: 100px;
+        height: 100px;
+    }
 </style>
 
 <div class="card border-0">
-  <div class="card-body">
-    <h1 class="card-title">Tableau de bord</h5>
-    {# <p class="card-text">Mes visites</p> #}
-    {% for flashSuccess in app.flashes('success_message') %}
-    <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
-    {% endfor %}
+    <div class="card-body">
+        <h1 class="card-title">Tableau de bord</h5>
+            {# <p class="card-text">Mes visites</p> #}
+            {% for flashSuccess in app.flashes('success_message') %}
+            <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
+            {% for flashSuccess in app.flashes('warning_message') %}
+            <div class="alert alert-warning" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for walk in walks %}
-                <tr>
-                    <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="walk.title"></td>
-                    <td>{{walk.title}}</td>
-                    <td>{{walk.description}}</td>
-                    <td>{{walk.date|date("m/d/Y")}}</td>
-                    <td>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link p-0" href="#">Voir</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-0" href="#">Modifier</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link p-0" href="#">Supprimer</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            {% if walks|length == 0 %}
+            <p>Aucune balade n'est enregistré actuellement</p>
+            {% else %}
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for walk in walks %}
+                        <tr>
+                            <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}"></td>
+                            <td>{{walk.title}}</td>
+                            <td>{{walk.description}}</td>
+                            <td>{{walk.date|date("m/d/Y")}}</td>
+                            <td>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#">Voir</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0"
+                                            href="{{path('walk_update', {id: walk.id})}}">Modifier</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#myModal" data-toggle="modal" data-id="{{walk.id}}">Supprimer</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% endif %}
+
+
+            <a href="{{path('walk_create')}}" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Ajouter une
+                visite</a>
     </div>
-
-    <a href="{{path('walk_create')}}" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Ajouter une visite</a>
-  </div>
 </div>
 
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <h4 class="modal-title w-100"><i class="fa fa-trash text-danger"></i>
+                    Êtes-vous sûr?
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous vraiment supprimer cet enregistrement ?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <a href="#" class="btn btn-danger">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $('#myModal').on('shown.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var modal = $(this)
+            modal.find('.modal-footer a').attr('href','/walk/delete/' + id)
+        })
+    </script>
 {% endblock %}
