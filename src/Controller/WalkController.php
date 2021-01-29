@@ -182,8 +182,13 @@ class WalkController extends AbstractController
      */
     public function showWalk(int $id): Response
     {
-        return $this->render('walk/index.html.twig',[
+        // recupération de la walk ICI
+        $walk = $this->getDoctrine()->getRepository(Walk::class)
+            ->find($id)
+            ;
 
+        return $this->render('walk/index.html.twig',[
+            'walk' => $walk
         ]);
     }
 
