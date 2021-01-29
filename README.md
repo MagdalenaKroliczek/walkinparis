@@ -35,7 +35,7 @@ terminal 2
 maildev --hide-extensions STARTTLS
 ```
 
-le server mail est accessible à l'addresse depuis un navigateur : http://localhost:1025
+le server mail est accessible à l'addresse depuis un navigateur : http://localhost:1080
 
 
 ## 2. Mise à jour à partir de Git
