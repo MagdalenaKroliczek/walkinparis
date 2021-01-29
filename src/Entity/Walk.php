@@ -38,7 +38,7 @@ class Walk
     private $image;
 
     /**
-     * @ORM\OneToOne(targetEntity=Account::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Account::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $guide;
@@ -98,6 +98,10 @@ class Walk
         $this->image = $image;
 
         return $this;
+    }
+
+    public function hasImage(): bool {
+        return $this->image != null;
     }
 
     public function getGuide(): ?Account
