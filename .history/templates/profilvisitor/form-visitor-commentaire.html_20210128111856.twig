@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<style>
+    .btn-primary {
+  color: rgba(10, 2, 2, 0.616);
+  font-weight: bold;
+  background-color: #60d2f5;
+  border-color: #081ee6; }
+  
+</style>
+
+ <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					
+        </div>
+        
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper">
+						<div class="row no-gutters">
+							<div class="col-lg-6">
+                <br>
+								<div class="contact-wrap w-100 p-md-5 p-4">
+                  <h3>Donnez votre avis !</h3>
+                  <br>
+                  <select class=form-control>
+                    <option value=un>Le Manoir Senchal</option>
+                    <option value=deux>Goussainville Vieux-Pays</option>
+                    <option value=trois>Les Trois Domaines</option>
+                    <option value=trois>Les Aracades du lac</option>
+                    <option value=trois>Les espaces d'Abraxas</option>
+                   </select>
+				      				
+									<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control" name="name" id="name" placeholder="Nom">
+												</div>
+											</div>
+											<div class="col-md-12"> 
+												<div class="form-group">
+													<input type="prenom" class="form-control" name="prenom" id="prenom" placeholder="Prénom">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control" name="subject" id="subject" placeholder="Titre du sujet">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Ecrivez votre avis ici"></textarea>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="Envoyez" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-5 img">
+			          </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
