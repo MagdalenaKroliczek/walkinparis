@@ -7,15 +7,6 @@
   .carousel-item .carousel-caption {
     background: rgba(0, 0, 0, 0.5)
   }
-
-  .container-walk .container-walk_image {
-      text-align: center;
-      padding-left: 0;
-  }
-  .container-walk .container-walk_image img {
-    height: 200px;
-    width:auto;
-  }
 </style>
 
 <div class="container-carousel">
@@ -82,13 +73,13 @@
 
   {% for walk in walks %}
   <div class="row border mb-3 g-0">
-    <div class="container-walk_image col-12 col-lg-4">
-      <img src="{{ asset('uploads/' ~ walk.image) }}" alt="walk.title">
+    <div class="container-walk_image col-12 col-md-4 pl-0 text-center">
+      <img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}" class="img-fluid">
     </div>
-    <div class="container-walk_description col-12 col-lg-8 p-3">
+    <div class="container-walk_description col-12 col-md-8 p-3">
       <h4>{{walk.title}}</h4>
       <p>{{walk.description|striptags|length>250 ? walk.description|striptags|slice(0, 250) ~ '...' :  walk.description|striptags }}</p>
-      <a href="#" class="btn btn-primary">Voir plus de détails</a>
+      <a href="{{path('walk_show', {id: walk.id})}}" class="btn btn-primary">Voir plus de détails</a>
     </div>
   </div>
   {% endfor %}
