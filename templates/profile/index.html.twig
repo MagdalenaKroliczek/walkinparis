@@ -23,18 +23,15 @@
             <label for="prenom">Prénom : </label>
             <input type="text" class="form-control" id="prenom" placeholder="Saisir votre prénom" name="prenom" required>
         </div>
-        <div class="form-group">
-            <label for="email">Email : </label>
-            <input type="email" class="form-control" id="email" placeholder="Saisir votre email" name="email" required>
-        </div>
+        
         <div class="form-group">
             <label for="telephone">Téléphone : </label>
             <input type="text" class="form-control" id="telephone" placeholder="Saisir votre numéro de téléphone" name="telephone">
         </div>
         <br>
 
-        <button type="submit" class="btn btn-primary">Mettre à jour mon profil</button>
-        <button type="submit" class="btn btn-primary">Supprimer mon profil</button>  
+        <button type="submit" class="btn btn-primary"> <a href="{{ path('modify_account', {'id': account.id}) }}"> Mettre à jour mon profil</a></button>
+        <button type="submit" class="btn btn-primary"><a href="{{ path('delete_account', {'id': account.id}) }}">Supprimer mon profil </a></button>  
     </form>
 </div>
 {% endblock %}

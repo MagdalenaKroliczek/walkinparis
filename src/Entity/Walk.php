@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\WalkRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,8 +50,18 @@ class Walk
      */
     private $price = 0;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Account::class)
+     * @ORM\JoinTable(name="walk_visitors",
+     *  joinColumns={@ORM\JoinColumn(name="walk_id", referencedColumnName="id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="account_id", referencedColumnName="id")}
+     * )
+     */
+    private $visitors;
+
     public function __construct() {
         $this->date =  new \DateTime();
+        $this->visitors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +141,30 @@ class Walk
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Account[]
+     */
+    public function getVisitors(): Collection
+    {
+        return $this->visitors;
+    }
+
+    public function addVisitor(Account $visitor): self
+    {
+        if (!$this->visitors->contains($visitor)) {
+            $this->visitors[] = $visitor;
+        }
+
+        return $this;
+    }
+
+    public function removeVisitor(Account $visitor): self
+    {
+        $this->visitors->removeElement($visitor);
 
         return $this;
     }

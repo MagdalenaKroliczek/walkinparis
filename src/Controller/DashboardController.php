@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Walk;
+use App\Repository\WalkRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,9 +39,11 @@ class DashboardController extends AbstractController
 
     public function showGuideDashboard(): Response
     {
+        $guide = $this->getUser();
+
         $entityManager = $this->getDoctrine()->getManager();
         $walkRepository = $entityManager->getRepository(Walk::class);
-        $walks = $walkRepository->findBy(['guide' => $this->getUser()]);
+        $walks = $walkRepository->findBy(['guide' => $guide]);
 
         return $this->render('dashboard/guide.html.twig', [
             'walks' => $walks,
@@ -50,9 +53,17 @@ class DashboardController extends AbstractController
     
     public function showVisitorDashboard(): Response
     {
+        $visitor = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        /**
+         * @var WalkRepository 
+         */
+        $walkRepository = $entityManager->getRepository(Walk::class);
+        $walks = $walkRepository->findByVisitors($visitor);
+
         return $this->render('dashboard/visitor.html.twig', [
-            'controller_name' => 'DashboardController',
-            'action_name' => 'showVisitorDashboard',
+            'walks' => $walks,
         ]);
     }
 }

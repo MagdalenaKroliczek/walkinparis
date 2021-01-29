@@ -187,9 +187,80 @@ class WalkController extends AbstractController
             ->find($id)
             ;
 
+
         return $this->render('walk/index.html.twig',[
-            'walk' => $walk
+            'walk' => $walk,
         ]);
     }
 
+    /**
+     * @IsGranted({"ROLE_ADMIN","ROLE_VISITOR"})
+     * @Route("/walk/book/{id}", name="walk_book", requirements={"id"="\d+"})
+     */
+    public function bookWalk(int $id): Response 
+    {
+        $visitor = $this->getUser();
+        if($visitor->isGuide()) {
+            $this->addFlash('warning_message','Vous devez être visiteur pour réserver une balade :)');
+            return $this->redirectToRoute('walk_show', ["id" => $id]);
+        }
+
+        $walk = $this->getDoctrine()->getRepository(Walk::class)
+            ->find($id)
+        ;
+        if(!$walk) {
+            $this->addFlash('warning_message','Balade non trouvée');
+            return $this->redirectToRoute('walk_show', ["id" => $id]);
+        }
+
+        $visitor = $this->getUser();
+        if($walk->getVisitors()->contains($visitor)) {
+            $this->addFlash('warning_message','Balade déjà réservée :)');
+            return $this->redirectToRoute('walk_show', ["id" => $id]);
+        }
+
+        $walk->addVisitor($visitor);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($walk);
+        $entityManager->flush();
+
+        $this->addFlash('success_message','Balade réservée :)');
+        return $this->redirectToRoute('walk_show', ["id" => $id]);
+    }
+
+    /**
+     * @IsGranted({"ROLE_ADMIN","ROLE_VISITOR"})
+     * @Route("/walk/cancel/{id}", name="walk_cancel", requirements={"id"="\d+"})
+     */
+    public function cancelWalk(int $id): Response 
+    {
+        $visitor = $this->getUser();
+        if($visitor->isGuide()) {
+            $this->addFlash('warning_message','Vous devez être visiteur pour annuler une balade :)');
+            return $this->redirectToRoute('dashboard');
+        }
+
+        $walk = $this->getDoctrine()->getRepository(Walk::class)
+        ->find($id)
+        ;
+        if(!$walk) {
+            $this->addFlash('warning_message','Balade non trouvée');
+            return $this->redirectToRoute('dashboard');
+        }
+
+        if(!$walk->getVisitors()->contains($visitor)) {
+            $this->addFlash('warning_message','Balade non réservée :)');
+            return $this->redirectToRoute('dashboard');
+        }
+
+        $walk->removeVisitor($visitor);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($walk);
+        $entityManager->flush();
+
+        $this->addFlash('success_message','Réservation de balade annulée');
+        return $this->redirectToRoute('dashboard');
+    }
 }
