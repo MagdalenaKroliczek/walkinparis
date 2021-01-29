@@ -13,26 +13,21 @@
     <div class="card" style="width: 18rem; float: right; margin-right: 200px; margin-top:30px;">
         <div class="card-body">
           <h4 class="card-title">Détails de la visite</h4>
-          <p class="card-text">Le prix:30 euros. Le prix comprend: Une visite avec guidée .</p>
+          <p class="card-text">{{walk.price}}</p>
           <a href="#" class="btn btn-primary">Réservation</a>
         </div>
     </div>
     <div class="container">
-        <h1 style="font-style: italic; color: black;">Goussainville Vieux-Pays </h1>
+        <h1 style="font-style: italic; color: black;">{{walk.title}}</h1>
             <p style="text-align: initial; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
-                À quelques minutes de la gare RER de Goussainville se trouve<br>
-                Le hameau, trop proche d'une des pistes de l'aéroport de Roissy, s'est arrêté en 1973. <br>
-                Au premier regard, on ne voit que les maisons en ruine. Mais ne parlez surtout pas de village fantôme...
-                l’un des villages les plus insolites d’Île-de-France. Depuis 1973, ce hameau situé<br>
-                 à cinq kilomètres de l’aéroport Roissy Charles de Gaulle est presque entièrement abandonné <br>
-                 C'est un voyage inoubliable, venez avec nous.
+             {{walk.description}}
             </p>     
     </div>
     <br>
     <br>
+    <br>
     <div class="images">
-        <img src="{{ asset('assets/images/1o.jpg') }}"  alt="...">
-        <img src="{{ asset('assets/images/3abd.jpg') }}" alt="...">   
+         <img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}" class="img-fluid">
     </div>
 
     <br> 
@@ -81,7 +76,9 @@
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>       
       </form>
-    </div>  
+    </div> 
+
+</div>
 
 
 {% endblock %}
