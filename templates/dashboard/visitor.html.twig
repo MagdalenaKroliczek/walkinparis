@@ -19,3 +19,103 @@
     </ul>
 </div>
 {% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+<style>
+.table-responsive img{
+    width: 100px;
+    height: 100px;
+}
+</style>
+
+<div class="card border-0">
+  <div class="card-body">
+    <h1 class="card-title">Tableau de bord</h5>
+    {# <p class="card-text">Mes visites</p> #}
+    {% for flashSuccess in app.flashes('success_message') %}
+    <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+    {% endfor %}
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{{asset('images/1.jpg')}}" alt=""></td>
+                    <td>Les espaces d'Abraxas</td>
+                    <td>Aimez-vous Game of Thrones? Vous devez visiter cet endroit avec nous!</td>
+                    <td>25/02/2021 à 09:00</td>
+                    <td>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Voir</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Modifier</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Supprimer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{{asset('images/2.jpg')}}" alt=""></td>
+                    <td>Cimetière du Père Lachaise </td>
+                    <td>Le plus grand et le plus célèbre cimetière parisien, fondé en 1804</td>
+                    <td>25/02/2021 à 09:00</td>
+                    <td>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Voir</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Modifier</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Supprimer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{{asset('images/3.jpg')}}" alt=""></td>
+                    <td>Le Château de Monte-Cristo</td>
+                    <td>Après le succès du livre "Le Comte de Monte Cristo"</td>
+                    <td>25/02/2021 à 09:00</td>
+                    <td>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Voir</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Modifier</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="#">Laisser un commentaire</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Faire une réservation</a>
+    
+
+  </div>
+</div>
+
+{% endblock %}
