@@ -32,6 +32,7 @@
                             <th scope="col">Image</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Prix</th>
                             <th scope="col">Date</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -42,6 +43,7 @@
                             <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}"></td>
                             <td>{{walk.title}}</td>
                             <td>{{walk.description}}</td>
+                            <td>{{walk.price|format_currency('EUR')}}</td>
                             <td>{{walk.date|date("m/d/Y")}}</td>
                             <td>
                                 <ul class="nav flex-column">

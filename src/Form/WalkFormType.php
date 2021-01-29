@@ -21,6 +21,7 @@ class WalkFormType extends AbstractType
                 "widget" => 'single_text',
             ])
             ->add('description', Type\TextareaType::class)
+            ->add('price', Type\NumberType::class)
             ->add('image', Type\FileType::class, [
                 'mapped' => false
             ] )

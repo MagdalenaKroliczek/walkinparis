@@ -11,9 +11,10 @@
       {{ form_start(walkForm) }}
       <hr>
 
-      {{ form_row(walkForm.title, {'attr': {'placeholder': 'Saisir un titre de promenade'} }) }}
+      {{ form_row(walkForm.title, {'attr': {'placeholder': 'Saisir un titre de promenade'},'label': 'Titre' }) }}
       {{ form_row(walkForm.date) }}
-      {{ form_row(walkForm.description,  {'attr': {'placeholder': 'Saisir une description'} }) }}
+      {{ form_row(walkForm.description,  {'attr': {'placeholder': 'Saisir une description'}, 'label': 'Description' }) }}
+      {{ form_row(walkForm.price, {'attr': {'placeholder': 'Saisir un prix (€)'}, 'label': 'Prix' }) }}
       {{ form_row(walkForm.image, {
             label: 'Ajouter une photo'
         }) }}
