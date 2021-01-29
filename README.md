@@ -21,8 +21,7 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/walkinparis
 ```sh
 php bin/console doctrine:database:create
 php bin/console make:migration
-
-
+php bin/console doctrine:migrations:migrate
 ```
 
 4/ Puis lancer les servers dans 2 consoles différentes:
@@ -104,5 +103,3 @@ git commit -m "first commit"
 git branch -M develop
 git remote add origin https://github.com/Badawane/walkinparis.git
 git push -u origin develop
-
-générer une class pour le formulaire

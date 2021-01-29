@@ -5,7 +5,7 @@
 {% block body %}
 <div class="card border-0">
   <div class="card-body">
-    <h1 class="card-title">Créer une balade</h5>
+    <h1 class="card-title">Modifier une balade</h5>
       <p>Complétez les informations suivantes :</p>
 
       {{ form_start(walkForm) }}
@@ -18,7 +18,7 @@
             label: 'Ajouter une photo'
         }) }}
 
-      {{ form_widget(walkForm.save, { 'label': 'Ajouter' }) }} <a href="{{path('dashboard')}}">Annuler</a>
+      {{ form_widget(walkForm.save, { 'label': 'Modifier' }) }} <a href="{{path('dashboard')}}">Annuler</a>
 
       {{ form_end(walkForm) }}
   </div>
