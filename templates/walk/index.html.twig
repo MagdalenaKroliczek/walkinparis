@@ -4,55 +4,89 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-   
+.guide-presentation h2 {
+  color: darkgoldenrod; 
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+  margin-left: 10px
+}
+.walk-images {
+  height: 450px;
+  text-align:center;
+}
+.walk-images img {
+  max-width: 100%;
+  max-height: 100%;
+}
 </style>
 
-<body style="background-color:snow;">
-    <div class="card" style="width: 18rem; float: right; margin-right: 200px; margin-top:30px;">
-        <div class="card-body">
-          <h4 class="card-title">Détails de la visite</h4>
-          <p class="card-text">{{walk.price}}</p>
-          <a href="#" class="btn btn-primary">Réservation</a>
-        </div>
-    </div>
-    <div class="container">
-        <h1 style="font-style: italic; color: black;">{{walk.title}}</h1>
-            <p style="text-align: initial; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
-             {{walk.description}}
-            </p>     
-    </div>
-    <br>
-    <br>
-    <br>
-    <div class="images">
-         <img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}" class="img-fluid">
+{% for flashSuccess in app.flashes('success_message') %}
+<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+{% endfor %}
+{% for flashSuccess in app.flashes('warning_message') %}
+<div class="alert alert-warning" role="alert">{{ flashSuccess }}</div>
+{% endfor %}
+
+<div class="container">
+
+  <div class="row py-4">
+
+    <!-- walks details -->
+    <div class="col-md-7 col-lg-8">
+      <h1 class="card-title">{{walk.title}}</h1>
+      <p>{{walk.description}}</p>
+
+      <div class="walk-images w-100">
+        <img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}" class="img-fluid rounded">
+      </div>
+
     </div>
 
-    <br> 
-    <h2 style="color: darkgoldenrod; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 10px;">Guide touristique</h2>
-    <br>
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="{{ asset('assets/images/ja1.jpg') }}" alt="...">
+    <!-- book action -->
+    <div class="col-md-5 col-lg-4">
+      <div class="card" style="w-100">
+        <div class="card-body">
+          <h4 class="card-title">Détails de la visite</h4>
+          <p class="card-text">{{walk.price|format_currency('EUR')}}</p>
+          {% if account.isVisitor() %}
+            {% if walk.isAlreadyBookedBy(account) %}
+              <a href="{{path('walk_cancel', {id: walk.id})}}" class="btn btn-danger">Annuler la réservation</a>
+            {% else %}
+              <a href="{{path('walk_book', {id: walk.id})}}" class="btn btn-primary">Réserver</a>
+            {% endif %}
+          {% endif %}
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Madeleine B.</h5>
-            <p class="card-text">Une amoureux de Paris et de ses coins et recoins.
-              Depuis 5 ans, il s'occupe de tournées de loisir dans ses coins et recoins. Il connaît les demeures abandonnées comme sa propre poche.
-              Passionné d'architecture et de photographie</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- guide presentatiion -->
+  <div class="row guide-presentation">
+    <div class="col-12">
+      <h2>Guide touristique</h2>
+      <br>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ asset('assets/images/ja1.jpg') }}" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{walk.guide.fullname}}</h5>
+              <p class="card-text">Une amoureux de Paris et de ses coins et recoins.
+                Depuis 5 ans, il s'occupe de tournées de loisir dans ses coins et recoins. Il connaît les demeures
+                abandonnées comme sa propre poche.
+                Passionné d'architecture et de photographie</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="container">
-      <br>
+  </div>
+
+  <!-- contact guide -->
+  <div class="row">
+    <div class="col-12">
       <h1>Contactez le guide</h1>
-      <br>
 
       <form method="post" action="">
         <div class="form-group">
@@ -69,16 +103,15 @@
         </div>
         <div class="form-group">
           <label for="Message">
-          Votre message
+            Votre message
           </label>
           <br />
-          <textarea name="Message" id="Message" rows="5" cols="40"></textarea> 
+          <textarea name="Message" id="Message" rows="5" cols="40"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>       
+        <button type="submit" class="btn btn-primary">Envoyer</button>
       </form>
-    </div> 
+    </div>
+  </div>
 
 </div>
-
-
 {% endblock %}

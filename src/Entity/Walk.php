@@ -168,4 +168,8 @@ class Walk
 
         return $this;
     }
+
+    public function isAlreadyBookedBy(Account $visitor): bool {
+        return $this->getVisitors()->contains($visitor);
+    }
 }
