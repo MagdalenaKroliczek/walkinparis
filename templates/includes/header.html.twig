@@ -9,7 +9,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% if app.user.isGuide() %}
-                                <span class="badge badge-primary">Guide</span> {{app.user.email}}
+                                <span class="badge badge-danger">Guide</span> {{app.user.email}}
                             {% elseif app.user.isVisitor() %}
                                 <span class="badge badge-primary">Visiteur</span>  {{app.user.email}}
                             {% endif %}
