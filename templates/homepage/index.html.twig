@@ -12,13 +12,22 @@
      max-height: 400px;
      height: 400px;
   }
+  .carousel-inner > .carousel-item > .blurred-image {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
   .carousel, .carousel-inner, .carousel-inner > .carousel-item {
       height: 100%;
       text-align:center;
   }
   .carousel-inner > .carousel-item > img {
     height: 100%;
-    min-width: 100%;
+    /* min-width: 100%; */
     width: auto;
   }
 
@@ -37,6 +46,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
+        <div class="blurred-image" style="background: no-repeat center/100% url({{ asset('assets/images/abrax.jpg') }})"></div>
         <img src="{{ asset('assets/images/abrax.jpg') }}" alt="Le Menoir Senchal">
         <div class="carousel-caption d-none d-md-block">
           <h3>Les espaces d'Abraxas</h3>
@@ -44,6 +54,7 @@
         </div>
       </div>
       <div class="carousel-item">
+        <div class="blurred-image" style="background: no-repeat center/100% url({{ asset('assets/images/aband.jpg') }})"></div>
         <img src="{{ asset('assets/images/aband.jpg') }}" alt="Goussainville Vieux-Pays">
         <div class="carousel-caption d-none d-md-block">
           <h3>Goussainville Vieux-Pays</h3>
@@ -51,6 +62,7 @@
         </div>
       </div>
       <div class="carousel-item">
+        <div class="blurred-image" style="background: no-repeat center/100% url({{ asset('assets/images/eiffel.jpg') }})"></div>
         <img src="{{ asset('assets/images/eiffel.jpg') }}" alt="La Tour Eiffel">
         <div class="carousel-caption d-none d-md-block">
           <h3>La tour Eiffel</h3>
