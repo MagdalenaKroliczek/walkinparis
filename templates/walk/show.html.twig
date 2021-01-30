@@ -47,11 +47,18 @@
         <div class="card-body">
           <h4 class="card-title">Détails de la visite</h4>
           <p class="card-text">{{walk.price|format_currency('EUR')}}</p>
-          {% if account.isVisitor() %}
-            {% if walk.isAlreadyBookedBy(account) %}
-              <a href="#myModal" data-toggle="modal" data-id="{{walk.id}}" class="btn btn-danger">Annuler la réservation</a>
-            {% else %}
-              <a href="{{path('walk_book', {id: walk.id})}}" class="btn btn-primary">Réserver</a>
+          {% if not account %}
+              <p>
+                Veuillez vous identifier pour réserver
+              </p>
+              <a href="{{path('app_login')}}" class="btn btn-primary">S'identifier</a>
+          {% else %}
+            {% if account.isVisitor() %}
+              {% if walk.isAlreadyBookedBy(account) %}
+                <a href="#myModal" data-toggle="modal" data-id="{{walk.id}}" class="btn btn-danger">Annuler la réservation</a>
+              {% else %}
+                <a href="{{path('walk_book', {id: walk.id})}}" class="btn btn-primary">Réserver</a>
+              {% endif %}
             {% endif %}
           {% endif %}
         </div>
