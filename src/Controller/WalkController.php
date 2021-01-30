@@ -186,7 +186,7 @@ class WalkController extends AbstractController
             ->find($id);
         
         $account = $this->getUser();
-        return $this->render('walk/index.html.twig',[
+        return $this->render('walk/show.html.twig',[
             'walk' => $walk,
             'account' => $account,
         ]);

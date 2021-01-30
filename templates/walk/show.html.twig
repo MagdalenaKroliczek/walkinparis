@@ -49,7 +49,7 @@
           <p class="card-text">{{walk.price|format_currency('EUR')}}</p>
           {% if account.isVisitor() %}
             {% if walk.isAlreadyBookedBy(account) %}
-              <a href="{{path('walk_cancel', {id: walk.id})}}" class="btn btn-danger">Annuler la réservation</a>
+              <a href="#myModal" data-toggle="modal" data-id="{{walk.id}}" class="btn btn-danger">Annuler la réservation</a>
             {% else %}
               <a href="{{path('walk_book', {id: walk.id})}}" class="btn btn-primary">Réserver</a>
             {% endif %}
@@ -114,4 +114,35 @@
   </div>
 
 </div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <h4 class="modal-title w-100"><i class="fa fa-trash text-danger"></i>
+                    Êtes-vous sûr?
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous vraiment annuler cette réservation ?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                <a href="#" class="btn btn-danger">Je confirme l'annulation</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        $('#myModal').on('shown.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var modal = $(this)
+            modal.find('.modal-footer a').attr('href','/walk/cancel/' + id)
+        })
+    </script>
 {% endblock %}
