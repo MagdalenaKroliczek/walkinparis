@@ -43,7 +43,7 @@ class DashboardController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $walkRepository = $entityManager->getRepository(Walk::class);
-        $walks = $walkRepository->findBy(['guide' => $guide]);
+        $walks = $walkRepository->findBy(['guide' => $guide], ["date" => "DESC"]);
 
         return $this->render('dashboard/guide.html.twig', [
             'walks' => $walks,

@@ -47,7 +47,7 @@ class WalkRepository extends ServiceEntityRepository
             ->leftJoin('w.visitors', 'v')
             ->andWhere('v.id = :val')
             ->setParameter('val', $visitor)
-            ->orderBy('w.id', 'ASC')
+            ->orderBy('w.date', 'DESC')
             // ->setMaxResults(10)
             ->getQuery()
             ->getResult();
