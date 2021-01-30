@@ -41,7 +41,18 @@
                         {% for walk in walks %}
                         <tr>
                             <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}"></td>
-                            <td>{{walk.title}}</td>
+                            <td>
+                            <p>
+                            {{walk.title}} 
+                            </p>
+                            {% set visitorsCount = walk.getVisitors().count() %}
+                            Participants: 
+                            {% if visitorsCount %}
+                                <span class="badge badge-pill badge-primary">{{ visitorsCount }}</span>
+                            {% else %}
+                                <span class="badge badge-pill badge-secondary">0</span>
+                            {% endif %}
+                            </td>
                             <td>{{walk.description}}</td>
                             <td>{{walk.price|format_currency('EUR')}}</td>
                             <td>{{walk.date|date("d/m/Y à H:m")}}</td>
