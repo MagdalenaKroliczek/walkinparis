@@ -31,7 +31,7 @@ public function modifyAccount(int $id, Request $request): Response
 {
     $entityManager = $this->getDoctrine()->getManager();
 
-    $Account = $entityManager->getRepository(Account::class)->find($id);
+    $account = $entityManager->getRepository(Account::class)->find($id);
     $form = $this->createForm(ProfileFormType::class, $account);
     $form->handleRequest($request);
 
