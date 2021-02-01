@@ -24,7 +24,7 @@ class AuthenticationEntryPoint implements AuthenticationEntryPointInterface
     public function start(Request $request, AuthenticationException $authException = null): RedirectResponse
     {
         // add a custom flash message and redirect to the login page
-        $this->session->getFlashBag()->add('login_message', 'You have to login in order to access this page.');
+        $this->session->getFlashBag()->add('login_message', 'Votre email est désormais vérifié. Vous pouvez vous identifier.');
 
         return new RedirectResponse($this->urlGenerator->generate('app_login'));
     }
