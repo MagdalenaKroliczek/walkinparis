@@ -17,6 +17,14 @@
   max-width: 100%;
   max-height: 100%;
 }
+.no-image div {
+    width: 150px;
+    background-color: gray;
+}
+.no-image div i {
+    font-size: 150px;
+    color: white;
+}
 </style>
 
 {% for flashSuccess in app.flashes('success_message') %}
@@ -75,15 +83,19 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="{{ asset('assets/images/ja1.jpg') }}" alt="...">
+              {% if walk.guide and walk.guide.hasImage() %}
+              <img src="{{ asset('uploads/' ~ walk.guide.image) }}" alt="{{walk.guide.fullname}}"
+                  class="img-circle img-fluid rounded" width="150">
+              {% else %}
+              <div class='no-image text-center'>
+                  <div><i class="fa fa-user"></i></div>
+              </div>
+              {% endif %}
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">{{walk.guide.fullname}}</h5>
-              <p class="card-text">Une amoureux de Paris et de ses coins et recoins.
-                Depuis 5 ans, il s'occupe de tournées de loisir dans ses coins et recoins. Il connaît les demeures
-                abandonnées comme sa propre poche.
-                Passionné d'architecture et de photographie</p>
+              <p class="card-text">{{walk.guide.description}}</p>
             </div>
           </div>
         </div>

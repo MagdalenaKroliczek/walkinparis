@@ -89,4 +89,19 @@ class WalkRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * Find walk with given visitor as parameter using DQL object
+     * @return Walk[] Returns an array of Walk objects
+     */
+    public function getLastThreeWalks()
+    {
+        return $this->createQueryBuilder('walk')
+            ->leftJoin('walk.visitors', 'account')
+            ->orderBy('walk.date', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
 }

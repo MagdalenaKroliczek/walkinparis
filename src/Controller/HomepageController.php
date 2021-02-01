@@ -35,6 +35,7 @@ class HomepageController extends AbstractController
             'walks' => $walks,
             'searchForm' => $form->createView(),
             'keywords' => $keywords,
+            'last_walks' => $walkRepository->getLastThreeWalks()
         ]);
     }
 }

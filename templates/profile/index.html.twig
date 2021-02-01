@@ -4,34 +4,60 @@
 
 {% block body %}
 <style>
-    .profile-form { margin-top: 1em; }
-    .btn{
-        background-color: #F77349;
-        
+    .no-image div {
+        width: 150px;
+        background-color: gray;
+    }
+    .no-image div i {
+        font-size: 150px;
+        color: white;
     }
 </style>
 
-<div class="profile-form">
-    <h1>Modifier mon profil</h1>
+<div class="card border-0">
+    <div class="card-body">
+        <h1 class="card-title">Modifier mon profil</h1>
+        {# <p class="card-text">Mes visites</p> #}
+        {% for flashSuccess in app.flashes('success_message') %}
+        <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
+        {% for flashSuccess in app.flashes('warning_message') %}
+        <div class="alert alert-warning" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
+        <div class="row">
+            <!-- Photo -->
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card">
+                    <div class="card-block">
+                        <center class="m-t-30">
+                            {% if account.hasImage() %}
+                            <img src="{{ asset('uploads/' ~ account.image) }}" alt="{{account.fullname}}"
+                                class="img-circle img-fluid rounded" width="150">
+                            {% else %}
+                            <div class='no-image'>
+                                <div><i class="fa fa-user"></i></div>
+                            </div>
+                            {% endif %}
+                            <h4 class="card-title m-t-10">{{account.fullname}}</h4>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <!-- Form -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                <div class="card">
+                    <div class="card-block p-3">
+                        {{ form_start(accountForm) }}
+                        {{ form_row(accountForm.fullname, {'attr': {'placeholder': 'Saisir votre nom complet'},'label': 'Nom complet' }) }}
+                        {{ form_row(accountForm.description,  {'attr': {'placeholder': 'Saisir une description'}, 'label': 'Description' }) }}
+                        {{ form_row(accountForm.image, { label: 'Image' }) }}
+                        {{ form_widget(accountForm.save, { 'label': 'Sauvegarder' }) }}
+                        {{ form_end(accountForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <form method="post" action="">
-        <div class="form-group">
-            <label for="nom">Nom : </label>
-        <input type="text" class="form-control" id="nom" placeholder="Saisir votre nom" name="nom" required>
-        </div>
-        <div class="form-group">
-            <label for="prenom">Prénom : </label>
-            <input type="text" class="form-control" id="prenom" placeholder="Saisir votre prénom" name="prenom" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="telephone">Téléphone : </label>
-            <input type="text" class="form-control" id="telephone" placeholder="Saisir votre numéro de téléphone" name="telephone">
-        </div>
-        <br>
-
-        <button type="submit" class="btn btn-primary"> <a href="{{ path('modify_account', {'id': account.id}) }}"> Mettre à jour mon profil</a></button>
-        <button type="submit" class="btn btn-primary"><a href="{{ path('delete_account', {'id': account.id}) }}">Supprimer mon profil </a></button>  
-    </form>
+    </div>
 </div>
 {% endblock %}

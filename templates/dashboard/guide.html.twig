@@ -13,74 +13,74 @@
 <div class="card border-0">
     <div class="card-body">
         <h1 class="card-title">Tableau de bord</h1>
-            {# <p class="card-text">Mes visites</p> #}
-            {% for flashSuccess in app.flashes('success_message') %}
-            <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
-            {% endfor %}
-            {% for flashSuccess in app.flashes('warning_message') %}
-            <div class="alert alert-warning" role="alert">{{ flashSuccess }}</div>
-            {% endfor %}
+        {# <p class="card-text">Mes visites</p> #}
+        {% for flashSuccess in app.flashes('success_message') %}
+        <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
+        {% for flashSuccess in app.flashes('warning_message') %}
+        <div class="alert alert-warning" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
 
-            {% if walks|length == 0 %}
-            <p>Aucune balade n'est enregistré actuellement</p>
-            {% else %}
+        {% if walks|length == 0 %}
+        <p>Aucune balade n'est enregistré actuellement</p>
+        {% else %}
 
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Image</th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for walk in walks %}
-                        <tr>
-                            <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}"></td>
-                            <td>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for walk in walks %}
+                    <tr>
+                        <td><img src="{{ asset('uploads/' ~ walk.image) }}" alt="{{walk.title}}"></td>
+                        <td>
                             <p>
-                            {{walk.title}} 
+                                {{walk.title}}
                             </p>
                             {% set visitorsCount = walk.getVisitors().count() %}
-                            Participants: 
+                            Participants:
                             {% if visitorsCount %}
-                                <span class="badge badge-pill badge-primary">{{ visitorsCount }}</span>
+                            <span class="badge badge-pill badge-primary">{{ visitorsCount }}</span>
                             {% else %}
-                                <span class="badge badge-pill badge-secondary">0</span>
+                            <span class="badge badge-pill badge-secondary">0</span>
                             {% endif %}
-                            </td>
-                            <td>{{walk.description}}</td>
-                            <td>{{walk.price|format_currency('EUR')}}</td>
-                            <td>{{walk.date|date("d/m/Y à H:m")}}</td>
-                            <td>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link p-0" href="{{path('walk_show', {id: walk.id})}}">Voir</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link p-0"
-                                            href="{{path('walk_update', {id: walk.id})}}">Modifier</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link p-0" href="#myModal" data-toggle="modal" data-id="{{walk.id}}">Supprimer</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                        </td>
+                        <td>{{walk.description}}</td>
+                        <td>{{walk.price|format_currency('EUR')}}</td>
+                        <td>{{walk.date|date("d/m/Y à H:m")}}</td>
+                        <td>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link p-0" href="{{path('walk_show', {id: walk.id})}}">Voir</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-0" href="{{path('walk_update', {id: walk.id})}}">Modifier</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-0" href="#myModal" data-toggle="modal"
+                                        data-id="{{walk.id}}">Supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-            {% endif %}
+        {% endif %}
 
 
-            <a href="{{path('walk_create')}}" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Ajouter une
-                visite</a>
+        <a href="{{path('walk_create')}}" class="card-link btn btn-primary"><i class="fa fa-plus"></i> Ajouter une
+            visite</a>
     </div>
 </div>
 
@@ -105,12 +105,12 @@
 </div>
 {% endblock %}
 {% block scripts %}
-    <script>
-        $('#myModal').on('shown.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var modal = $(this)
-            modal.find('.modal-footer a').attr('href','/walk/delete/' + id)
-        })
-    </script>
+<script>
+    $('#myModal').on('shown.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this)
+        modal.find('.modal-footer a').attr('href', '/walk/delete/' + id)
+    })
+</script>
 {% endblock %}
