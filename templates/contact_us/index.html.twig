@@ -1,46 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nous Contacter{% endblock %}
+{% block title %} Page de Contact{% endblock %}
 
 {% block body %}
-<div class="container">
+  <h1>Contactez nous</h1>
+  
+  {% for message in app.flashes("succes_mail") %}
+      <spam class="text-success">{{message}}</spam>
+  {% endfor %}
+
+  {{ form_start(formContactUs) }}
+      {{ form_row(formContactUs.sujet) }}
+      {{ form_row(formContactUs.email) }}
+      {{ form_row(formContactUs.message) }}
       <br>
-      <h1>Contactez nous</h1>
-      <br>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+  {{ form_end(formContactUs) }}
 
-      <form method="post" action="">
-        <div class="form-group">
-          <label for="nom">Nom : </label>
-          <input type="text" class="form-control" id="nom" placeholder="Saisir votre nom" name="nom" required>
-        </div>
-        <div class="form-group">
-          <label for="prenom">Prénom : </label>
-          <input type="text" class="form-control" id="prenom" placeholder="Saisir votre prénom" name="prenom" required>
-        </div>
-        <div class="form-group">
-          <label for="adresse">Pseudo  : </label>
-          <input type="text" class="form-control" id="pseudo " placeholder="Saisir votre pseudo " name="pseudo" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email : </label>
-          <input type="email" class="form-control" id="email" placeholder="Saisir votre email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="telephone">Téléphone : </label>
-          <input type="text" class="form-control" id="telephone" placeholder="Saisir votre numéro de téléphone" name="telephone">
-        </div>
-
-        <div class="form-group">
-          <label for="Message">
-          Votre message
-          </label>
-          <br />
-          <textarea name="Message" id="Message" rows="10" cols="50"></textarea> 
-        </div>
-        <input type="file" name="monfichier">
-		<br><br>
-
-        <button type="submit" class="btn btn-primary">Envoyer</button>       
-      </form>
-    </div> 
+  <br>
 {% endblock %}
+
