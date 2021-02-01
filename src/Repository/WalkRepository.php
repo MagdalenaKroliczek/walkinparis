@@ -36,6 +36,18 @@ class WalkRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /*
+    public function findOneBySomeField($value): ?Walk
+    {
+        return $this->createQueryBuilder('w')
+            ->andWhere('w.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
     
     /**
      * Find walk with given visitor as parameter using DQL object
@@ -47,7 +59,7 @@ class WalkRepository extends ServiceEntityRepository
             ->leftJoin('walk.visitors', 'account')
             ->andWhere('account.id = :val')
             ->setParameter('val', $visitor)
-            ->orderBy('w.date', 'DESC')
+            ->orderBy('walk.date', 'DESC')
             // ->setMaxResults(10)
             ->getQuery()
             ->getResult();
@@ -77,16 +89,4 @@ class WalkRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
-    /*
-    public function findOneBySomeField($value): ?Walk
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
