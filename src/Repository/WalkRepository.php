@@ -38,14 +38,14 @@ class WalkRepository extends ServiceEntityRepository
     */
     
     /**
-     * Find walk with given visitor as parameter with DQL object
+     * Find walk with given visitor as parameter using DQL object
      * @return Walk[] Returns an array of Walk objects
      */
     public function findByVisitors(Account $visitor)
     {
-        return $this->createQueryBuilder('w')
-            ->leftJoin('w.visitors', 'v')
-            ->andWhere('v.id = :val')
+        return $this->createQueryBuilder('walk')
+            ->leftJoin('walk.visitors', 'account')
+            ->andWhere('account.id = :val')
             ->setParameter('val', $visitor)
             ->orderBy('w.date', 'DESC')
             // ->setMaxResults(10)
@@ -53,7 +53,30 @@ class WalkRepository extends ServiceEntityRepository
             ->getResult();
         ;
     }
-    
+
+    /**
+     * Find walks with given keywords using DQL object
+     * @return Walk[] Returns an array of Walk objects
+     */
+    public function findByKeywords(string $keywords)
+    {
+        $qb = $this->createQueryBuilder('walk');
+
+        if($keywords) {
+            $qb->where($qb->expr()->orX(
+                $qb->expr()->like('walk.title', ':title'),
+                $qb->expr()->like('walk.description', ':description')
+            ))
+            ->setParameter('title', "%".$keywords."%")
+            ->setParameter('description', "%".$keywords."%");
+        }
+
+        return $qb->orderBy('walk.date', 'DESC')
+            // ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Walk

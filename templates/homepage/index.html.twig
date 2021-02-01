@@ -89,10 +89,10 @@
 
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Recherche par mots-clés" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Chercher</button>
-    </form>
+    {{ form_start(searchForm, {'attr': {'class': 'd-flex'},}) }}
+      {{ form_widget(searchForm.keywords, {'attr': {'placeholder': 'Recherche par mots-clés','class': 'mr-2'},}) }}
+      {{ form_widget(searchForm.submit, {'attr': {'class': 'btn btn-outline-success'}, label:"Chercher"}) }}
+    {{ form_end(searchForm) }}
   </div>
 </nav>
 <br>
@@ -100,7 +100,8 @@
 <div class="container container-walk mb-5">
 
   {% if walks|length == 0 %}
-  <b>Aucune balade n'est enregistrée actuellement<b>
+  <b>Aucune balade n'est enregistrée actuellement</b>
+  {% if keywords %}avec le mot clé <i>{{keywords}}</i>{% endif %}
   {% endif %}
 
   {% for walk in walks %}
