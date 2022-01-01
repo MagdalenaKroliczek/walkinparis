@@ -1,7 +1,7 @@
 # WalkInParis 
 
 ## 1. Installation à partir de Git
-1/ Dans votre repertoire www des projets, taper les 3 commandes suivantes dans le terminal vscode dans le repertoire www
+1/ Dans votre repertoire www des projets, taper les 3 commandes suivantes dans le terminal vscode dans le repertoire www 
 ```sh
 git clone https://github.com/Badawane/walkinparis.git
 cd walkinparis
